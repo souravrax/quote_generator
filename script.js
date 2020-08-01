@@ -5,6 +5,21 @@ const authorText = document.getElementById("author");
 const twitterButton = document.getElementById("twitter");
 const facebookButton = document.getElementById("facebook");
 const instagramButton = document.getElementById("instagram");
+const loader = document.getElementById("loader");
+
+// Show Loading
+function loading () {
+    loader.hidden = false;
+    quoteContainer.hidden = true;
+}
+
+// Hide Loading
+function complete() {
+    if(!loader.hidden) {
+        quoteContainer.hidden = false;
+        loader.hidden = true;
+    }
+}
 
 window.fbAsyncInit = function () {
     FB.init({
@@ -33,6 +48,9 @@ async function getQuote() {
 
 
 function changeDOM(data) {
+    // Stop Loader Animation
+    complete();
+
     if (data["quoteAuthor"] === "") data["quoteAuthor"] = "unknown";
 
     if (data.quoteText.length >= 120) {
@@ -70,6 +88,8 @@ facebookButton.addEventListener('click', shareQuoteOnFacebook);
 
 
 newQuoteBtn.addEventListener('click', async () => {
+    // Show Loader
+    loading();
     getQuote()
 });
 
