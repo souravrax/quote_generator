@@ -8,13 +8,13 @@ const instagramButton = document.getElementById("instagram");
 const loader = document.getElementById("loader");
 
 // Show Loading
-function loading () {
+function showLoadingSpinner () {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading
-function complete() {
+function hideLoadingSpinner() {
     if(!loader.hidden) {
         quoteContainer.hidden = false;
         loader.hidden = true;
@@ -35,7 +35,7 @@ window.fbAsyncInit = function () {
 
 async function getQuote() {
     // Show Loader
-    loading();
+    showLoadingSpinner();
     const proxyURL = "https://cors-anywhere.herokuapp.com/";
     const URL = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
     try {
@@ -51,7 +51,7 @@ async function getQuote() {
 
 function changeDOM(data) {
     // Stop Loader Animation
-    complete();
+    hideLoadingSpinner();
 
     if (data["quoteAuthor"] === "") data["quoteAuthor"] = "unknown";
 
