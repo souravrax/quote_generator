@@ -34,6 +34,8 @@ window.fbAsyncInit = function () {
 // Get quote from http://forismatic.com/en/api
 
 async function getQuote() {
+    // Show Loader
+    loading();
     const proxyURL = "https://cors-anywhere.herokuapp.com/";
     const URL = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
     try {
@@ -88,8 +90,6 @@ facebookButton.addEventListener('click', shareQuoteOnFacebook);
 
 
 newQuoteBtn.addEventListener('click', async () => {
-    // Show Loader
-    loading();
     getQuote()
 });
 
