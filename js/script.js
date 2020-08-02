@@ -4,7 +4,6 @@ const quoteText = document.querySelector("#quote");
 const authorText = document.getElementById("author");
 const twitterButton = document.getElementById("twitter");
 const facebookButton = document.getElementById("facebook");
-const instagramButton = document.getElementById("instagram");
 const loader = document.getElementById("loader");
 
 // Show Loading
@@ -78,7 +77,7 @@ function shareQuoteOnFacebook() {
     const author = authorText.innerText;
     FB.ui({
         method: "share",
-        href: "https://cors-anywhere.herokuapp.com/",
+        href: "https://souravrax.github.io/quote_generator",
         quote: `${quote} - ${author}`
     }, (res) => {
         console.log(res);
